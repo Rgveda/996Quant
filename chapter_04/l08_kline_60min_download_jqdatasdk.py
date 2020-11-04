@@ -77,8 +77,8 @@ if __name__ == '__main__':
     for year in range(2005, 2017):
         start_date = '{}-01-01'
         end_date = '{}-01-02'
-        for code in indexlist:
-
+        for asset in indexlist:
+            print(asset)
         #his = jqapi.get_price(asset, start_date, end_date, frequency='60m')
         data_day = QA.QA_fetch_stock_min_adv(codelist,
             start='2019-01-01',

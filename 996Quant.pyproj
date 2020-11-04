@@ -22,8 +22,11 @@
     <Compile Include="chapter_04\l08_kline_60min_download_jqdatasdk.py" />
     <Compile Include="GolemQ\cli\__init__.py" />
     <Compile Include="GolemQ\cli\__main__.py" />
+    <Compile Include="GolemQ\utils\const.py" />
+    <Compile Include="GolemQ\utils\parameter.py" />
     <Compile Include="GolemQ\utils\path.py" />
     <Compile Include="GolemQ\utils\settings.py" />
+    <Compile Include="GolemQ\utils\symbol.py" />
     <Compile Include="GolemQ\utils\__init__.py" />
     <Compile Include="GolemQ\__init__.py" />
   </ItemGroup>
