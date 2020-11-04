@@ -158,7 +158,7 @@ def export_metadata_to_pickle(export_path, code, frequence='60min', metadata=Non
     return metadata
 
 
-def export_metadata_from_pickle(export_path, code, frequence='60min'):
+def import_metadata_from_pickle(export_path, code, frequence='60min'):
     if (isinstance(code, list)):
         code = code[0]
 
