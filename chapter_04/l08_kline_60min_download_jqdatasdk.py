@@ -61,7 +61,7 @@ if __name__ == '__main__':
     #                                   'username',
     #                                   'password'])
     # 用上面的代码保存密码到用户配置 .GolemQ 目录下面
-    password = load_settings('password.hdf5')
+    password = load_settings('password.pickle')
     auth(password.username[0], password.password[0]) #ID是申请时所填写的手机号；Password为聚宽官网登录密码，新申请用户默认为手机号后6位
     asset = u'000001.XSHE'
     is_auth = is_auth()
