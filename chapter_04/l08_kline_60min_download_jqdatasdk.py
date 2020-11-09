@@ -155,6 +155,7 @@ if __name__ == '__main__':
                 '601318', '600563', '600066', '300122', 
                 '300263', '601857', '600600', '000538', 
                 '300325', '000671', '600036']
+    #stocklist = []
     stocklist = jqapi.normalize_code(stocklist)
 
     for year in range(2017, 2005, -1):

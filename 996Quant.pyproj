@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{943eaabe-7c89-4eef-9301-ee45947eb8f5}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>chapter_04\l08_kline_60min_download_jqdatasdk.py</StartupFile>
+    <StartupFile>chapter_06\l04_plot_a_kline_with_boll.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -20,6 +20,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="chapter_04\l08_kline_60min_download_jqdatasdk.py" />
+    <Compile Include="chapter_06\l04_plot_a_kline_with_boll.py" />
+    <Compile Include="chapter_06\l03_plot_a_kline_with_macd.py" />
+    <Compile Include="chapter_06\l02_plot_a_kline_with_ma.py" />
+    <Compile Include="chapter_06\l01_plot_a_kline.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="GolemQ\cli\__init__.py" />
     <Compile Include="GolemQ\cli\__main__.py" />
     <Compile Include="GolemQ\utils\const.py" />
@@ -34,7 +40,10 @@
     <Folder Include="chapter_04" />
     <Folder Include="GolemQ" />
     <Folder Include="GolemQ\cli" />
+    <Folder Include="chapter_06\" />
+    <Folder Include="samples\" />
     <Folder Include="GolemQ\utils" />
+    <Folder Include="samples\data\" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|PythonCore|3.7" />

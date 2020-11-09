@@ -238,3 +238,13 @@ def export_hdf_min(code, market_type, export_path='export', features=None):
         data_day.data.to_hdf(os.path.join(export_path, 'stock', '{}_{}_kline.hdf'.format(code, frequence)), key='df', mode='w')
 
     return data_day.data
+
+def load_cache(filename = 'cache.pickle'):
+    filename = filename.replace(' ', '_').replace(':', '_')
+    metadata = pd.read_pickle(os.path.join(mkdirs(os.path.join('samples', 'data', 'cache')), filename))
+    return metadata
+
+def save_cache(filename = 'cache.pickle', metadata = None):
+    filename = filename.replace(' ', '_').replace(':', '_')
+    metadata = metadata.to_pickle(os.path.join(mkdirs(os.path.join('samples', 'data', 'cache')), filename))
+    return filename
