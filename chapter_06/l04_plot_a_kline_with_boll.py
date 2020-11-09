@@ -252,7 +252,7 @@ if __name__ == '__main__':
                              sort=False)
         ohlc_data = data_min.data.tail(320)
     except:
-        # 没有装QA或者没有数据，尝试读取 pickle 缓存
+        # 没有装QA或者没有保存数据，尝试读取 pickle 缓存
         fllename = 'kline_{}_{}.pickle'.format(symbol,
                                        frequence)
         ohlc_data = load_cache(fllename)

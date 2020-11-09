@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{943eaabe-7c89-4eef-9301-ee45947eb8f5}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>chapter_06\l04_plot_a_kline_with_boll.py</StartupFile>
+    <StartupFile>chapter_06\l03_plot_a_kline_with_macd.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>

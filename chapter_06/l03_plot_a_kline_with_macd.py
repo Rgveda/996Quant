@@ -55,67 +55,6 @@ except:
     pass
 
 
-def ohlc_plot_with_macd(ohlc_data, features, 
-                        code=None, codename=None, title=None):
-
-    # 暗色主题
-    plt.style.use('Solarize_Light2')
-
-    # 正常显示中文字体
-    plt.rcParams['font.sans-serif'] = ['Microsoft YaHei']
-    fig = plt.figure(figsize = (16,7))
-    plt.subplots_adjust(left=0.05, right=0.97)
-    if (title is None):
-        fig.suptitle(u'阿财的 {:s}（{:s}）量化学习笔记绘制K线DEMO'.format(codename, 
-                                                            code), fontsize=16)
-    else:
-        fig.suptitle(title, fontsize=16)
-    ax1 = plt.subplot2grid((4,3),(0,0), rowspan=3, colspan=3)
-    ax2 = plt.subplot2grid((4,3),(3,0), rowspan=1, colspan=3, sharex=ax1)
-
-    # 绘制K线
-    ohlc_data = ohlc_data.reset_index([1], drop=False)
-    mc_stock_cn = mpf.make_marketcolors(up='r',down='g')
-    s_stock_cn = mpf.make_mpf_style(marketcolors=mc_stock_cn)
-    mpf.plot(data=ohlc_data, ax=ax1, type='candle', style=s_stock_cn)
-
-    # 设定最标轴时间
-    datetime_index = ohlc_data.index.get_level_values(level=0).to_series()
-    DATETIME_LABEL = datetime_index.apply(lambda x: 
-                                          x.strftime("%Y-%m-%d %H:%M")[2:16])
-
-    ax1.plot(DATETIME_LABEL, features['MA30'], lw=0.75, 
-             color='blue', alpha=0.6)
-    ax1.plot(DATETIME_LABEL, features['MA90'], lw=1, 
-             color='crimson', alpha=0.5)
-    ax1.plot(DATETIME_LABEL, features['MA120'], lw=1,
-             color='limegreen', alpha=0.5)
-    ax1.grid(True)
-
-    ax2.plot(DATETIME_LABEL, features['DIF'], 
-             color='green', lw=1, label='DIF')
-    ax2.plot(DATETIME_LABEL, features['DEA'], 
-             color = 'purple', lw = 1, label = 'DEA')
-
-    barlist = ax2.bar(DATETIME_LABEL, features['MACD'], 
-                      width = 0.6, label = 'MACD')
-    for i in range(len(DATETIME_LABEL.index)):
-        if features['MACD'][i] <= 0:
-            barlist[i].set_color('g')
-        else:
-            barlist[i].set_color('r')
-    ax2.set(ylabel='MACD(26,12,9)')
-
-    ax2.set_xticks(range(0, len(DATETIME_LABEL), 
-                         round(len(DATETIME_LABEL) / 12)))
-    ax2.set_xticklabels(DATETIME_LABEL[::round(len(DATETIME_LABEL) / 12)], 
-                        rotation=15)
-    ax2.grid(True)
-
-
-    return ax1, ax2, DATETIME_LABEL
-
-
 def TA_MACD(prices:np.ndarray, 
             fastperiod:int=12, 
             slowperiod:int=26, 
@@ -152,6 +91,62 @@ def macd_cross_func(data):
                               index=data.index)
 
     return MACD_CROSS
+
+
+def ohlc_plot_with_macd(ohlc_data, features, 
+                        code=None, codename=None, title=None):
+    # 暗色主题
+    plt.style.use('Solarize_Light2')
+
+    # 正常显示中文字体
+    plt.rcParams['font.sans-serif'] = ['Microsoft YaHei']
+    fig = plt.figure(figsize = (16,7))
+    plt.subplots_adjust(left=0.05, right=0.97)
+    if (title is None):
+        fig.suptitle(u'阿财的 {:s}（{:s}）量化学习笔记绘制K线DEMO'.format(codename, 
+                                                            code), fontsize=16)
+    else:
+        fig.suptitle(title, fontsize=16)
+    ax1 = plt.subplot2grid((4,3),(0,0), rowspan=3, colspan=3)
+    ax2 = plt.subplot2grid((4,3),(3,0), rowspan=1, colspan=3, sharex=ax1)
+
+    # 绘制K线
+    ohlc_data = ohlc_data.reset_index([1], drop=False)
+    mc_stock_cn = mpf.make_marketcolors(up='r',down='g')
+    s_stock_cn = mpf.make_mpf_style(marketcolors=mc_stock_cn)
+    mpf.plot(data=ohlc_data, ax=ax1, type='candle', style=s_stock_cn)
+
+    # 设定最标轴时间
+    datetime_index = ohlc_data.index.get_level_values(level=0).to_series()
+    DATETIME_LABEL = datetime_index.apply(lambda x: 
+                                          x.strftime("%Y-%m-%d %H:%M")[2:16])
+    ax1.plot(DATETIME_LABEL, features['MA30'], lw=0.75, 
+             color='blue', alpha=0.6)
+    ax1.plot(DATETIME_LABEL, features['MA90'], lw=1, 
+             color='crimson', alpha=0.5)
+    ax1.plot(DATETIME_LABEL, features['MA120'], lw=1,
+             color='limegreen', alpha=0.5)
+    ax1.grid(True)
+    ax2.plot(DATETIME_LABEL, features['DIF'], 
+             color='green', lw=1, label='DIF')
+    ax2.plot(DATETIME_LABEL, features['DEA'], 
+             color = 'purple', lw = 1, label = 'DEA')
+
+    barlist = ax2.bar(DATETIME_LABEL, features['MACD'], 
+                      width = 0.6, label = 'MACD')
+    for i in range(len(DATETIME_LABEL.index)):
+        if features['MACD'][i] <= 0:
+            barlist[i].set_color('g')
+        else:
+            barlist[i].set_color('r')
+    ax2.set(ylabel='MACD(26,12,9)')
+
+    ax2.set_xticks(range(0, len(DATETIME_LABEL), 
+                         round(len(DATETIME_LABEL) / 12)))
+    ax2.set_xticklabels(DATETIME_LABEL[::round(len(DATETIME_LABEL) / 12)], 
+                        rotation=15)
+    ax2.grid(True)
+    return ax1, ax2, DATETIME_LABEL
 
 
 def ma30_cross_func(data):
