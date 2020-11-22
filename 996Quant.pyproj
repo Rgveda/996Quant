@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{943eaabe-7c89-4eef-9301-ee45947eb8f5}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>chapter_06\l03_plot_a_kline_with_macd.py</StartupFile>
+    <StartupFile>chapter_04\l02_hs300_60min_download_jqdatasdk.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -19,13 +19,16 @@
     <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="chapter_04\l08_kline_60min_download_jqdatasdk.py" />
+    <Compile Include="chapter_04\l03_top1700_60min_download_jqdatasdk.py" />
+    <Compile Include="chapter_04\l02_hs300_60min_download_jqdatasdk.py" />
+    <Compile Include="chapter_04\l01_kline_60min_download_jqdatasdk.py" />
     <Compile Include="chapter_06\l04_plot_a_kline_with_boll.py" />
     <Compile Include="chapter_06\l03_plot_a_kline_with_macd.py" />
     <Compile Include="chapter_06\l02_plot_a_kline_with_ma.py" />
     <Compile Include="chapter_06\l01_plot_a_kline.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="chapter_07\l04_robust_peak_point.py" />
     <Compile Include="GolemQ\cli\__init__.py" />
     <Compile Include="GolemQ\cli\__main__.py" />
     <Compile Include="GolemQ\utils\const.py" />
@@ -41,6 +44,7 @@
     <Folder Include="GolemQ" />
     <Folder Include="GolemQ\cli" />
     <Folder Include="chapter_06\" />
+    <Folder Include="chapter_07\" />
     <Folder Include="samples\" />
     <Folder Include="GolemQ\utils" />
     <Folder Include="samples\data\" />
