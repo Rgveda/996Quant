@@ -1,0 +1,3 @@
+[submodule "GolemQ"]
+	path = GolemQ
+	url = https://github.com/Rgveda/GolemQ
