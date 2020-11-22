@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{943eaabe-7c89-4eef-9301-ee45947eb8f5}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>chapter_04\l02_hs300_60min_download_jqdatasdk.py</StartupFile>
+    <StartupFile>chapter_04\l03_top1700_60min_download_jqdatasdk.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -29,15 +29,38 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="chapter_07\l04_robust_peak_point.py" />
+    <Compile Include="GolemQ\cli\holding.py" />
+    <Compile Include="GolemQ\cli\okex.py" />
+    <Compile Include="GolemQ\cli\portfolio.py" />
+    <Compile Include="GolemQ\cli\show_number.py" />
+    <Compile Include="GolemQ\cli\sub.py" />
     <Compile Include="GolemQ\cli\__init__.py" />
     <Compile Include="GolemQ\cli\__main__.py" />
+    <Compile Include="GolemQ\fetch\base.py" />
+    <Compile Include="GolemQ\fetch\kline.py" />
+    <Compile Include="GolemQ\fetch\Portfolio_signals.py" />
+    <Compile Include="GolemQ\fetch\StockCN_realtime.py" />
+    <Compile Include="GolemQ\fetch\__init__.py" />
+    <Compile Include="GolemQ\holding.py" />
+    <Compile Include="GolemQ\imitation\uqer.py" />
+    <Compile Include="GolemQ\imitation\__init__.py" />
+    <Compile Include="GolemQ\okex.py" />
+    <Compile Include="GolemQ\portfolio.py" />
+    <Compile Include="GolemQ\show_number.py" />
+    <Compile Include="GolemQ\sub.py" />
+    <Compile Include="GolemQ\test\fetch_test\realtime.py" />
+    <Compile Include="GolemQ\test\__init__.py" />
     <Compile Include="GolemQ\utils\const.py" />
+    <Compile Include="GolemQ\utils\gfx.py" />
     <Compile Include="GolemQ\utils\parameter.py" />
     <Compile Include="GolemQ\utils\path.py" />
+    <Compile Include="GolemQ\utils\preproccessing.py" />
     <Compile Include="GolemQ\utils\settings.py" />
     <Compile Include="GolemQ\utils\symbol.py" />
     <Compile Include="GolemQ\utils\__init__.py" />
+    <Compile Include="GolemQ\setup.py" />
     <Compile Include="GolemQ\__init__.py" />
+    <Compile Include="GolemQ\__main__.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="chapter_04" />
@@ -45,12 +68,23 @@
     <Folder Include="GolemQ\cli" />
     <Folder Include="chapter_06\" />
     <Folder Include="chapter_07\" />
+    <Folder Include="GolemQ\docs\" />
+    <Folder Include="GolemQ\docs\images\" />
+    <Folder Include="GolemQ\fetch\" />
+    <Folder Include="GolemQ\imitation\" />
+    <Folder Include="GolemQ\test\" />
+    <Folder Include="GolemQ\test\fetch_test\" />
     <Folder Include="samples\" />
     <Folder Include="GolemQ\utils" />
     <Folder Include="samples\data\" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|PythonCore|3.7" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GolemQ\docs\images\cli_usage.png" />
+    <Content Include="GolemQ\fetch\README.md" />
+    <Content Include="GolemQ\imitation\README.md" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
 </Project>

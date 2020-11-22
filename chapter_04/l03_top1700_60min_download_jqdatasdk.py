@@ -87,28 +87,35 @@ if __name__ == '__main__':
     print(is_auth)
 
     # 创建数据下载目录
-    stock_path = mkdirs(os.path.join(mkdirs('datastore'), 'kline', 'stock'))
+    frequence = '60min'
+    stock_path = mkdirs(os.path.join(mkdirs('datastore'), 'kline', 'stock', frequence))
     print(stock_path)
     frequence = '60min'
+
+    blockname = ['MSCI中国', 'MSCI成份', 'MSCI概念', '三网融合',
+                 '上证180', '上证380', '沪深300', '上证380', 
+                 '深证300', '上证50', '上证电信', '电信等权', 
+                 '上证100', '上证150', '沪深300', '中证100',
+                 '中证500', '全指消费', '中小板指', '创业板指',
+                 '综企指数', '1000可选', '国证食品', '深证可选',
+                 '深证消费', '深成消费', '中证酒', '中证白酒',
+                 '行业龙头', '白酒', '证券', '消费100', 
+                 '消费电子', '消费金融', '富时A50', '银行', 
+                 '中小银行', '证券', '军工', '白酒', '啤酒', 
+                 '医疗器械', '医疗器械服务', '医疗改革', '医药商业', 
+                 '医药电商', '中药', '消费100', '消费电子', 
+                 '消费金融', '黄金', '黄金概念', '4G5G', 
+                 '5G概念', '生态农业', '生物医药', '生物疫苗',
+                 '机场航运', '数字货币', '文化传媒']
+    blockname = list(set(blockname))
+    stocklists = QA.QA_fetch_stock_block_adv().get_block(blockname).code
+    print('批量评估板块成分股：{} Total:{}'.format(blockname, 
+                                               len(stocklists)))
+    stocklists = jqapi.normalize_code(stocklists)        
 
     for year in range(2017, 2005, -1):
         last_query_count = get_query_count()
         print(u'剩余可查询条数', last_query_count)
-        stocklists = []
-        for month in range(1, 12):
-            index_date = '{}-{}-01'.format(year, month)
-            # 获取特定日期截面的所有沪深300的股票成分
-            stocklist = jqapi.get_index_stocks('000300.XSHG', 
-                                               date=index_date)
-            time.sleep(0.2)
-            stocklists = stocklists + stocklist
-            
-        # 去除重复代码
-        stocklists = list(set(stocklists))
-        print(u'{}年 沪深300指数 一共有成分个股:{}个'.format(year, 
-                                                len(stocklists)), 
-              stocklists)
-        stocklists = jqapi.normalize_code(stocklists)        
 
         start_date = '{}-01-01'.format(year)
         end_date = '{}-01-02'.format(year + 1)

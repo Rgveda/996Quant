@@ -103,12 +103,12 @@ if __name__ == '__main__':
                   '399396', '399997', '159919', 
                   '159941', '159920', ]
     indexlist = jqapi.normalize_code(indexlist)
-    code = codelist[0]
+    code = indexlist[0]
 
     # 创建数据下载目录
-    index_path = mkdirs(os.path.join(mkdirs('datastore'), 'kline', 'index'))
-    print(index_path)
     frequence = '60min'
+    index_path = mkdirs(os.path.join(mkdirs('datastore'), 'kline', 'index', frequence))
+    print(index_path)
 
     for year in range(2017, 2005, -1):
         start_date = '{}-01-01'.format(year)
@@ -144,9 +144,9 @@ if __name__ == '__main__':
 
 
     # 创建数据下载目录
-    stock_path = mkdirs(os.path.join(mkdirs('datastore'), 'kline', 'stock'))
-    print(stock_path)
     frequence = '60min'
+    stock_path = mkdirs(os.path.join(mkdirs('datastore'), 'kline', 'stock', frequence))
+    print(stock_path)
 
     stocklist = ['002230', '600900', '300560', '300146', 
                 '002271', '603129', '002557', '002603', 
