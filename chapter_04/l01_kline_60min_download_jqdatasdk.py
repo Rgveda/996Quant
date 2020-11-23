@@ -91,9 +91,9 @@ if __name__ == '__main__':
                   '000036.XSHG', '000037.XSHG', '000038.XSHG', '000039.XSHG',  
                   '000040.XSHG', '000300.XSHG', '000112.XSHG', '000133.XSHG', 
                   '000903.XSHG', '000905.XSHG', '000906.XSHG',
-                  '399001', '399006', 
                   '000989.XSHG', '000990.XSHG', '000991.XSHG', '000992.XSHG', 
                   '000993.XSHG', '000994.XSHG', 
+                  '399001', '399006', 
                   '513030', '399684', '159934', '512000', 
                   '159987', '399616', '510050', '513100', 
                   '510850', '518880', '510180', '159916', 
@@ -107,7 +107,8 @@ if __name__ == '__main__':
 
     # 创建数据下载目录
     frequence = '60min'
-    index_path = mkdirs(os.path.join(mkdirs('datastore'), 'kline', 'index', frequence))
+    index_path = mkdirs(os.path.join(mkdirs('datastore'), 
+                                     'kline', 'index', frequence))
     print(index_path)
 
     for year in range(2017, 2005, -1):
@@ -115,14 +116,17 @@ if __name__ == '__main__':
         end_date = '{}-01-02'.format(year + 1)
         for asset in indexlist:
             print(asset, start_date, end_date,)
-            indexfile = os.path.join(index_path, u'{}_{}_{}.pickle'.format(asset, year, frequence))
+            indexfile = os.path.join(index_path, u'{}_{}_{}.pickle'.format(asset, 
+                                                                           year, 
+                                                                           frequence))
             if os.path.isfile(indexfile ):
                 print('文件已经存在，跳过 ', indexfile)
                 continue
             try:
                 print(indexfile )
                 his = jqapi.get_price(asset, start_date, end_date, frequency='60m')
-                export_metadata_to_pickle(index_path, u'{}_{}'.format(asset, year), metadata=his)
+                export_metadata_to_pickle(index_path, u'{}_{}'.format(asset, year), 
+                                          metadata=his)
                 #data_day = QA.QA_fetch_stock_min_adv(codelist,
                 #    start='2019-01-01',
                 #    end='2020-08-28',

@@ -88,7 +88,8 @@ if __name__ == '__main__':
 
     # 创建数据下载目录
     frequence = '60min'
-    stock_path = mkdirs(os.path.join(mkdirs('datastore'), 'kline', 'stock', frequence))
+    stock_path = mkdirs(os.path.join(mkdirs('datastore'), 'kline', 
+                                     'stock', frequence))
     print(stock_path)
 
     for year in range(2017, 2005, -1):

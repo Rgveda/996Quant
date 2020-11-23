@@ -68,13 +68,13 @@ if __name__ == '__main__':
                                      'password'])
 
     # 将用户密码token等信息保存到系统的当前用户目录 %userprofile%/.GolemQ 目录下面
-    if (exists_settings('jqdatasdk_pwd.pickle')):
-        password = load_settings('jqdatasdk_pwd.pickle')
+    pwd_save_file = 'jqdatasdk_pwd.pickle'
+    if (exists_settings(pwd_save_file)):
+        password = load_settings(pwd_save_file)
     else:
         password = input_settings(pattern=password,
-                                  filename='jqdatasdk_pwd.pickle',)
-        
-        save_settings('jqdatasdk_pwd.pickle', password)
+                                  filename=pwd_save_file,)   
+        save_settings(pwd_save_file, password)
 
     #ID是申请时所填写的手机号；Password为聚宽官网登录密码，新申请用户默认为手机号后6位
     auth(password.username[0], 
@@ -88,7 +88,8 @@ if __name__ == '__main__':
 
     # 创建数据下载目录
     frequence = '60min'
-    stock_path = mkdirs(os.path.join(mkdirs('datastore'), 'kline', 'stock', frequence))
+    stock_path = mkdirs(os.path.join(mkdirs('datastore'), 
+                                     'kline', 'stock', frequence))
     print(stock_path)
     frequence = '60min'
 
