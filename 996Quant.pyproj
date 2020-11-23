@@ -79,6 +79,8 @@
     <Content Include="GolemQ\docs\images\cli_usage.png" />
     <Content Include="GolemQ\fetch\README.md" />
     <Content Include="GolemQ\imitation\README.md" />
+    <Content Include="GolemQ\README.md" />
+    <Content Include="README.md" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
 </Project>
