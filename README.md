@@ -1,58 +1,112 @@
-# 996Quant
-35岁程序员退路之量化投资学习笔记
+# GolemQ
 
-# 35岁程序员的退路：量化投资学习路径
+A PowerToys based QUANTAXIS
 
-量化(Quantitative)这个词，在中文表面上含义都叫量化交易，其实分最少三类 P Quant(P Quant 我分2类，个人自己做和给机构打工) 和 Q Quant，其中Q Quant基本上只有去做投行甲方。具体深入讨论看这里：P Quant 和 Q Quant 到底哪个是未来？
+这是一个基于 QUANTAXIS 二次开发的量化系统子项目
 
-大家得想清楚自己想学习的是哪一类，自己想做的是哪一类的工作或者终身投资行为。Q Quant核心就是资产定价和风险平价体系。这东西适合大学本科或者研究生阶段学起，适合数学系，物理系，经济学或者金融专业背景，包括后续找工作等的，跨专业学习此类量化在找工作的时候会遇到Target School的隐形限制。
+发起这个子项目的原因是我人称BugKing，也没有精力去仔细测试，有些随手PR的代码可能会干扰QUANTAXIS主版本稳定性（是的，1.9.30版本无法获取A股财报的Bug是我PR上去的\>\_<）；某些开发了代码功能存在跟天神原始设计不相同的；或者规划路线图跟天神设计理念不同的；或者依赖或者模仿第三方量化平台接口的(我担心有法律之类的风险，所以也不适合PR到QUANTAXIS)。有的功能和代码因为我不是金融科班出身，也不知道现在的前沿趋势，贸然PR到QUANTAXIS，然后又自己发觉功能不妥或者不实用，然后又匆忙在QUANTAXIS中移除。再比如一部分功能代码我设计为cli命令行格式运行，而QA主要设计为Docker发布运行。
 
-P Quant，就是国内狭义的量化投资概念，它包括为机构投资服务和个人投资两种，也就是所谓的day trader with Quantitative trading，主要面临的就是交易系统选择。细分起来则是择时，Alpha择时，仓位控制，风险止损等等。它基本没有专业限制，即使不做相关工作，也可以作为业余副业给自己赚取后半生的稳定保障。
+这导致了一部分代码因为现实需求被我写出来，正在使用，但是跟QA风格并不匹配，而没有办法在Docker的HTML前端中顺利使用，暂时我也没相处好办法和QUANTAXIS 进行 PR 合并。
 
-所以此篇文章的所讨论35岁程序员退路的量化投资，就是属于P Quant的范畴。**因为学它不需要成为社畜才能变现，它是属于你自己的一亩三分地！** 请牢记这一点，一个程序猿不要为了找工作而学习量化，是为了挣脱996束缚的枷锁才来学习这一门技艺。
+但是又有很多朋友问这些常用的功能使用情况，为了发布我不得不打包代码，索性发布自己的第一个Git项目吧，也算是人生头一回原创 Git仓库了。
 
-野心很大，能力很弱，所以先列个知识架构索引
+## 安装：
 
-## 1 Python 基础
+在 QUANTAXIS Docker 中打开 Dashboard
 
-## 2 量化框架选型
+选择 qacommunity，打开 cli 控制台，输入 bash
 
-## 3 基础金融知识
+输入 git clone https://github.com/Rgveda/GolemQ.git
 
-## 4 解决行情数据来源
+cd GolemQ
 
-## 5 制定自己的命名规则
+python setup.py install
 
-## 6 技术指标
+## 使用：
 
-## 7 量化投资中的数学基础
+### 功能包括：
 
-## 8 量化分析基础
+来源新浪财经的A股实盘行情 l1快照数据
 
-## 9 赚取你认知中的Alpha
+在 repo 根目录下面，输入：
 
-## 10 时间序列分析
+python -m GolemQ.cli --sub sina_l1
 
-## 11 交易体系
+只保存部分股票数据，输入：
 
-## 12 图表交易系统
+python -m GolemQ.cli --sub sina_l1 --codelist "600783、601069、002152、000582、002013、000960、000881
+、000698、600742、600203、601186、601007、600328、600879"
 
-## 13 回测策略
+### 读取实盘l1数据
 
-## 14 你的第一个“高级”择时策略
+这里完成的动作包括，读取l1数据，重采样为1min数据，重采样为日线/小时线数据，具体方法为打开 Jupyter，输入
 
-## 15 金融工程
+*from GolemQ.fetch.kline import \(*
+    *get_kline_price,*
+    *get_kline_price_min,*
+*\)*
 
-## 16 Portfolio
+*data_day, codename = get_kline_price\("600519", verbose=True\)*
 
-## 17 ETF基金和 PoF 策略
+为避免出现很多打印信息，可以设置参数 *verbose=False*
 
-### FoF基金概念
+*data_day, codename = get_kline_price_min\("6003444", verbose=False\)*
 
-## 18 扩展金融数据处理 Python 的多CPU 并行处理
+### 已知Bug：
 
-## 19 更多加速Python程序运行的技巧
+上证指数 000001 实盘走势和平安银行混淆。 目前已经修正 ——2020.11.22
 
-## 20 机器学习
+成交量：Volumne和Amount 计算方式不对。
+
+未能正确处理 *000001.XSHG 600519.SH* 这类格式的代码，能返回K线数据，但是不含今日实盘数据
+
+### 常见问题
+
+无法运行命令
+
+*PS C:\Users\azai\source\repos\GolemQ> python -m GolemQ.cli --sub sina_l1*
+
+提示
+
+*C:\Users\azai\AppData\Local\Programs\Python\Python37\python.exe: Error 
+while finding module specification for 'GolemQ.cli' 
+(ModuleNotFoundError: No module named 'GolemQ')*
+
+解决方法输入 cd .. 切换到上一层目录
+
+*PS C:\Users\azai\source\repos\GolemQ> cd ..*
+
+*PS C:\Users\azai\source\repos> python -m GolemQ.cli --sub sina_l1*
+
+Program Last Time 3.762s
+
+Not Trading time 现在是中国A股收盘时间 2020-10-15 16:28:05.310437
+
+Not Trading time 现在是中国A股收盘时间 2020-10-15 16:28:07.314858
+
+Not Trading time 现在是中国A股收盘时间 2020-10-15 16:28:09.323150
+
+Not Trading time 现在是中国A股收盘时间 2020-10-15 16:28:11.334017
 
 
+## 例子
+
+### 读取实盘行情数据K线
+
+在 repo 根目录下面，输入
+
+*python -m GolemQ.test_cases.fetch_test.realtime*
+
+## 模仿优矿DataAPI数据接口
+
+挖了坑，未完成，待续
+
+## 计划
+
+模仿聚宽API接口——To be continue...
+
+Firstblood!
+
+By 阿财 
+
+2020.10.14

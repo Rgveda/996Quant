@@ -76,6 +76,7 @@
     <InterpreterReference Include="Global|PythonCore|3.7" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="GolemQ\cli\README.md" />
     <Content Include="GolemQ\docs\images\cli_usage.png" />
     <Content Include="GolemQ\fetch\README.md" />
     <Content Include="GolemQ\imitation\README.md" />
