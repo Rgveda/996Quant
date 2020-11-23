@@ -29,25 +29,19 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="chapter_07\l04_robust_peak_point.py" />
-    <Compile Include="GolemQ\cli\holding.py" />
-    <Compile Include="GolemQ\cli\okex.py" />
-    <Compile Include="GolemQ\cli\portfolio.py" />
-    <Compile Include="GolemQ\cli\show_number.py" />
-    <Compile Include="GolemQ\cli\sub.py" />
     <Compile Include="GolemQ\cli\__init__.py" />
-    <Compile Include="GolemQ\cli\__main__.py" />
     <Compile Include="GolemQ\fetch\base.py" />
     <Compile Include="GolemQ\fetch\kline.py" />
     <Compile Include="GolemQ\fetch\Portfolio_signals.py" />
     <Compile Include="GolemQ\fetch\StockCN_realtime.py" />
     <Compile Include="GolemQ\fetch\__init__.py" />
-    <Compile Include="GolemQ\holding.py" />
+    <Compile Include="GolemQ\cli\holding.py" />
     <Compile Include="GolemQ\imitation\uqer.py" />
     <Compile Include="GolemQ\imitation\__init__.py" />
-    <Compile Include="GolemQ\okex.py" />
-    <Compile Include="GolemQ\portfolio.py" />
-    <Compile Include="GolemQ\show_number.py" />
-    <Compile Include="GolemQ\sub.py" />
+    <Compile Include="GolemQ\cli\okex.py" />
+    <Compile Include="GolemQ\cli\portfolio.py" />
+    <Compile Include="GolemQ\cli\show_number.py" />
+    <Compile Include="GolemQ\cli\sub.py" />
     <Compile Include="GolemQ\test\fetch_test\realtime.py" />
     <Compile Include="GolemQ\test\__init__.py" />
     <Compile Include="GolemQ\utils\const.py" />
@@ -60,7 +54,7 @@
     <Compile Include="GolemQ\utils\__init__.py" />
     <Compile Include="GolemQ\setup.py" />
     <Compile Include="GolemQ\__init__.py" />
-    <Compile Include="GolemQ\__main__.py" />
+    <Compile Include="GolemQ\cli\__main__.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="chapter_04" />
