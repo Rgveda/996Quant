@@ -42,8 +42,8 @@
     <Compile Include="GolemQ\cli\portfolio.py" />
     <Compile Include="GolemQ\cli\show_number.py" />
     <Compile Include="GolemQ\cli\sub.py" />
-    <Compile Include="GolemQ\test\fetch_test\realtime.py" />
-    <Compile Include="GolemQ\test\__init__.py" />
+    <Compile Include="GolemQ\test_cases\fetch_test\realtime.py" />
+    <Compile Include="GolemQ\test_cases\__init__.py" />
     <Compile Include="GolemQ\utils\const.py" />
     <Compile Include="GolemQ\utils\gfx.py" />
     <Compile Include="GolemQ\utils\parameter.py" />
@@ -66,8 +66,8 @@
     <Folder Include="GolemQ\docs\images\" />
     <Folder Include="GolemQ\fetch\" />
     <Folder Include="GolemQ\imitation\" />
-    <Folder Include="GolemQ\test\" />
-    <Folder Include="GolemQ\test\fetch_test\" />
+    <Folder Include="GolemQ\test_cases\" />
+    <Folder Include="GolemQ\test_cases\fetch_test\" />
     <Folder Include="samples\" />
     <Folder Include="GolemQ\utils" />
     <Folder Include="samples\data\" />
